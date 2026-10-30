@@ -1,0 +1,43 @@
+---
+description: Architecture, security, and workflow rules
+alwaysApply: true
+---
+
+## Stack
+- React + Vite + strict TypeScript + Tailwind CSS.
+- Supabase for authentication and database access.
+- React Router for routing.
+- Reuse installed dependencies; avoid unnecessary packages.
+
+## Context and workflow
+- Read docs/requirements.md before feature work.
+- Read docs/database-schema.sql before database integration.
+- Treat supplied SQL as schema reference; verify deployed schema before relying on it.
+- Inspect relevant files only. Work on the requested stage.
+- Avoid unrelated refactors, speculative abstractions, and repeated repo scans.
+- Ask only when missing information blocks correct implementation.
+- Do not silently substitute mock data for failed requests.
+- Finish with a concise summary: changes, checks, blockers.
+
+## Architecture
+- Organize code by feature: auth, catalog, cart, orders, staff.
+- Keep Supabase operations in feature service modules.
+- Keep database types separate from domain/UI types.
+- Generate database types from the actual schema; never fabricate generated types.
+- Validate external inputs and persisted browser data.
+- Include loading, empty, error, and retry states where relevant.
+
+## Cart and checkout
+- Represent domain money as integer paise; explicitly map database money types.
+- Derive cart totals; browser totals are estimates.
+- Validate prices, options, availability, quantities, and identity server-side.
+- Create orders and items atomically through a trusted operation.
+- Enforce checkout idempotency in the backend.
+- Preserve the cart on failure; remove submitted items only after confirmed success.
+
+## Quality
+- Build accessible, responsive interfaces with keyboard support.
+- Use meaningful tests for business logic, authorization, and critical flows.
+- Use isolated test data; never run destructive tests against production.
+- Run npm run build, npm run lint, and relevant tests after each stage.
+- Report unverified security requirements; never claim readiness without evidence.

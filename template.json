@@ -1,0 +1,26 @@
+{
+  "kind": "safi.spa.root",
+  "version": "0.1.0",
+  "candidate": true,
+  "sourceSHA": "pending",
+  "schemaReference": "schemas/instance-config.schema.json",
+  "uiSlots": {
+    "header": {
+      "component": "SiteHeader",
+      "configPath": "displayName"
+    },
+    "navigation": {
+      "component": "SiteHeader",
+      "configPath": "navigation"
+    },
+    "chatPane": {
+      "component": "ChatPane",
+      "configPath": "appId",
+      "demoLabel": "Demo Chat (nonfunctional)"
+    },
+    "workspace": {
+      "component": "Workspace",
+      "configPath": "offerings"
+    }
+  }
+}

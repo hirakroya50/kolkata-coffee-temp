@@ -1,0 +1,882 @@
+:root {
+  --safi-primary: #f15a24;
+  --safi-background: #fff6ee;
+  --safi-surface: #ffffff;
+  --safi-on-primary: #ffffff;
+  --safi-on-background: #1a1423;
+  --safi-muted: #5b5366;
+  --safi-line: rgba(225, 29, 111, 0.16);
+  --safi-tint: rgba(241, 90, 36, 0.2);
+  --safi-header: rgba(255, 246, 238, 0.92);
+  --safi-lotus: #e2186f;
+  --safi-display: "Inter", "Segoe UI", system-ui, sans-serif;
+  --safi-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: var(--safi-sans);
+  font-size: 17px;
+  line-height: 1.5;
+  background: var(--safi-background);
+  color: var(--safi-on-background);
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--safi-tint);
+}
+
+a {
+  color: inherit;
+}
+
+.safi-app {
+  min-height: 100%;
+  background:
+    radial-gradient(900px 420px at 100% -10%, var(--safi-tint), transparent 60%),
+    var(--safi-background);
+  color: var(--safi-on-background);
+}
+
+.safi-skip {
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+  transform: translateY(-150%);
+  background: var(--safi-surface);
+  color: var(--safi-on-background);
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  z-index: 30;
+}
+
+.safi-skip:focus {
+  transform: none;
+}
+
+.safi-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.safi-template-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0.45rem 1.25rem;
+  background: var(--safi-lotus);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.safi-template-company {
+  font-weight: 700;
+}
+
+.safi-header {
+  display: grid;
+  grid-template-areas:
+    "brand action"
+    "nav nav";
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  padding: 0.85rem 1.25rem 0.95rem;
+  background: var(--safi-header);
+  border-top: 3px solid var(--safi-primary);
+  border-bottom: 1px solid var(--safi-line);
+  backdrop-filter: blur(16px);
+}
+
+.safi-brand {
+  grid-area: brand;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.safi-monogram {
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--safi-primary);
+  color: var(--safi-on-primary);
+  font-family: var(--safi-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.safi-wordmark {
+  font-family: var(--safi-display);
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.safi-nav {
+  grid-area: nav;
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+}
+
+.safi-nav a {
+  text-decoration: none;
+  color: var(--safi-muted);
+  font-size: 0.92rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.safi-nav a:hover {
+  color: var(--safi-on-background);
+  background: var(--safi-tint);
+}
+
+.safi-nav a[aria-current='true'] {
+  color: var(--safi-on-background);
+  background: var(--safi-tint);
+}
+
+.safi-header .safi-action {
+  grid-area: unset;
+}
+
+.safi-header-actions {
+  grid-area: action;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.safi-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1.15rem;
+  border-radius: 999px;
+  background: var(--safi-lotus);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 24px rgba(226, 24, 111, 0.24);
+}
+
+.safi-action:hover {
+  background: #c41262;
+}
+
+.safi-frame {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  padding: 2.25rem 0 4rem;
+}
+
+.safi-hero {
+  display: grid;
+  gap: 1.35rem;
+  align-items: stretch;
+  padding-top: 0.25rem;
+}
+
+.safi-hero-copy {
+  max-width: 38rem;
+}
+
+.safi-kicker,
+.safi-meta,
+.safi-chat-label {
+  margin: 0;
+  color: var(--safi-primary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.safi-hero h1 {
+  margin: 0.4rem 0 0;
+  font-family: var(--safi-display);
+  font-size: clamp(2.5rem, 8vw, 4.15rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  overflow-wrap: anywhere;
+}
+
+.safi-intro,
+.safi-about p {
+  color: var(--safi-muted);
+}
+
+.safi-intro {
+  margin: 1.1rem 0 1.4rem;
+  max-width: 36rem;
+  font-size: 1.12rem;
+}
+
+.safi-highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin: 0;
+  align-content: end;
+}
+
+.safi-highlights div {
+  background: var(--safi-surface);
+  border: 1px solid var(--safi-line);
+  border-radius: 1rem;
+  padding: 0.85rem 1rem;
+}
+
+.safi-highlights dt {
+  color: var(--safi-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.safi-highlights dd {
+  margin: 0.3rem 0 0;
+  font-family: var(--safi-display);
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+}
+
+.safi-workspace,
+.safi-about,
+.safi-contact,
+.safi-desk {
+  margin-top: 3.25rem;
+  scroll-margin-top: 15rem;
+}
+
+.safi-workspace h2,
+.safi-about h2,
+.safi-contact h2,
+.safi-desk h2 {
+  margin: 0 0 1rem;
+  font-family: var(--safi-display);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.safi-workspace-placeholder {
+  min-height: 8rem;
+}
+
+.safi-offering-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+.safi-offering-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: var(--safi-surface);
+  border: 1px solid var(--safi-line);
+  border-radius: 1.15rem;
+  padding: 1.15rem 1.2rem 1.25rem;
+  box-shadow: 0 12px 28px rgba(26, 20, 35, 0.04);
+}
+
+.safi-offering-list li:hover {
+  border-color: rgba(226, 24, 111, 0.38);
+}
+
+.safi-offering-list h3 {
+  margin: 0.35rem 0 0.35rem;
+  font-family: var(--safi-display);
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.safi-offering-list p,
+.safi-about p,
+.safi-empty,
+.safi-chat-heading p {
+  margin: 0;
+}
+
+.safi-offering-detail {
+  color: var(--safi-muted);
+  margin-top: auto;
+  padding-top: 0.35rem;
+}
+
+.safi-about {
+  background: var(--safi-surface);
+  border: 1px solid var(--safi-line);
+  border-radius: 1.25rem;
+  padding: 1.35rem 1.3rem 1.5rem;
+}
+
+.safi-about p {
+  max-width: 40rem;
+  font-family: var(--safi-display);
+  font-size: 1.28rem;
+  line-height: 1.45;
+}
+
+.safi-contact dl {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+}
+
+.safi-contact div {
+  display: grid;
+  gap: 0.2rem;
+  align-content: start;
+  background: var(--safi-surface);
+  border: 1px solid var(--safi-line);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+}
+
+.safi-contact dt {
+  color: var(--safi-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.safi-contact dd {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.safi-contact a {
+  color: var(--safi-primary);
+}
+
+.safi-empty {
+  color: var(--safi-muted);
+  padding: 1.25rem 0;
+}
+
+.safi-desk h3,
+.safi-record-list h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--safi-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.safi-form,
+.safi-desk-block,
+.safi-record-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.safi-form {
+  max-width: 32rem;
+}
+
+.safi-field {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--safi-muted);
+}
+
+.safi-field input,
+.safi-field select,
+.safi-field textarea {
+  font: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--safi-on-background);
+  background: var(--safi-surface);
+  border: 1px solid var(--safi-line);
+  border-radius: 0.8rem;
+  min-height: 44px;
+  padding: 0.55rem 0.75rem;
+  width: 100%;
+}
+
+.safi-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.safi-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1.05rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--safi-lotus);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  gap: 0.45rem;
+  box-shadow: 0 10px 24px rgba(226, 24, 111, 0.22);
+}
+
+.safi-button:hover {
+  background: #c41262;
+}
+
+.safi-button-quiet,
+.safi-button-quiet:hover {
+  background: transparent;
+  color: var(--safi-primary);
+  border: 1px solid var(--safi-line);
+  box-shadow: none;
+}
+
+.safi-button-quiet:hover {
+  background: var(--safi-tint);
+}
+
+.safi-account-name {
+  max-width: 12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.safi-record-list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.safi-record-list > li {
+  background: var(--safi-surface);
+  border: 1px solid var(--safi-line);
+  border-radius: 1.15rem;
+  padding: 1rem 1.1rem;
+}
+
+.safi-record-list ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.safi-note,
+.safi-error {
+  margin: 0.8rem 0 0;
+}
+
+.safi-error {
+  color: #b42318;
+}
+
+.safi-colophon {
+  margin: 0;
+  padding: 1.25rem 1.25rem 1.75rem;
+  text-align: center;
+  color: var(--safi-lotus);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.safi-branding {
+  min-width: 0;
+}
+
+.safi-chat-pane {
+  background: var(--safi-surface);
+  border: 1px solid var(--safi-line);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.safi-chat-heading {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.safi-chat-heading p,
+.safi-chat-label {
+  color: var(--safi-muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-size: 0.92rem;
+}
+
+.safi-chat-label {
+  color: var(--safi-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  max-width: 100%;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.safi-chat-heading p {
+  overflow-wrap: break-word;
+}
+
+.safi-chat-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.safi-chat-form input,
+.safi-chat-form button {
+  border: 1px solid var(--safi-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--safi-muted);
+  min-height: 44px;
+  padding: 0 0.9rem;
+  font: inherit;
+}
+
+.safi-chat-form input {
+  min-width: 0;
+  width: 100%;
+}
+
+.safi-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--safi-primary);
+  outline-offset: 3px;
+}
+
+@media (min-width: 480px) and (max-width: 959px) {
+  .safi-highlights {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 720px) {
+  .safi-offering-list,
+  .safi-contact dl {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  .safi-header {
+    grid-template-areas: "brand nav action";
+    grid-template-columns: auto 1fr auto;
+    padding-inline: 1.5rem;
+  }
+
+  .safi-nav {
+    justify-content: center;
+  }
+
+  .safi-frame {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    width: min(1120px, calc(100% - 3rem));
+    padding-top: 2.5rem;
+  }
+
+  .safi-hero {
+    grid-template-columns: minmax(0, 1.4fr) minmax(15rem, 0.72fr);
+    gap: 1.75rem;
+    align-items: start;
+  }
+
+  .safi-chat-pane {
+    position: sticky;
+    top: 7.5rem;
+  }
+
+  .safi-workspace,
+  .safi-about,
+  .safi-contact,
+  .safi-desk {
+    scroll-margin-top: 8.5rem;
+  }
+}
+
+@media (max-width: 719px) {
+  .safi-header {
+    grid-template-areas:
+      "brand"
+      "nav"
+      "action";
+    grid-template-columns: 1fr;
+    padding: 0.75rem 1rem 0.9rem;
+  }
+
+  .safi-header .safi-action {
+    display: none;
+  }
+
+  .safi-template-banner {
+    justify-content: center;
+    text-align: center;
+    padding-inline: 1rem;
+  }
+
+  .safi-frame {
+    width: min(1120px, calc(100% - 1.5rem));
+    padding-top: 1.5rem;
+  }
+
+  .safi-chat-form {
+    grid-template-columns: 1fr;
+  }
+
+  .safi-about p {
+    font-size: 1.12rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 479px) {
+  .safi-highlights dd {
+    font-size: 1.2rem;
+  }
+}
+
+.safi-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(26, 20, 35, 0.46);
+}
+
+.safi-modal-panel {
+  width: min(26rem, 100%);
+  max-height: min(40rem, calc(100% - 2rem));
+  overflow: auto;
+  background: var(--safi-surface);
+  color: var(--safi-on-background);
+  border-radius: 1.25rem;
+  padding: 1.15rem 1.15rem 1.3rem;
+  box-shadow: 0 24px 60px rgba(26, 20, 35, 0.22);
+}
+
+.safi-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.safi-modal-head h2 {
+  margin: 0;
+  font-family: var(--safi-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.safi-modal-close,
+.safi-toast-dismiss {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--safi-muted);
+  font: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.safi-modal-close:hover,
+.safi-toast-dismiss:hover {
+  background: var(--safi-tint);
+  color: var(--safi-on-background);
+}
+
+.safi-auth-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  margin: 1rem 0 0.25rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: var(--safi-background);
+}
+
+.safi-auth-switch button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--safi-muted);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.safi-auth-switch button[aria-selected='true'] {
+  background: var(--safi-surface);
+  color: var(--safi-on-background);
+  box-shadow: 0 1px 4px rgba(26, 20, 35, 0.08);
+}
+
+.safi-modal .safi-form {
+  margin-top: 0.9rem;
+}
+
+.safi-button:disabled {
+  cursor: progress;
+  opacity: 0.8;
+}
+
+.safi-button .safi-spinner {
+  border-color: rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+}
+
+.safi-spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--safi-line);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: safi-spin 0.7s linear infinite;
+}
+
+@keyframes safi-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.safi-toasts {
+  position: fixed;
+  z-index: 50;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  gap: 0.55rem;
+  width: min(22rem, calc(100% - 2rem));
+  pointer-events: none;
+}
+
+.safi-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0.7rem 0.55rem 0.7rem 0.8rem;
+  border-radius: 1rem;
+  background: #1a1423;
+  color: #fff7fb;
+  box-shadow: 0 12px 30px rgba(26, 20, 35, 0.24);
+  pointer-events: auto;
+}
+
+.safi-toast-badge {
+  flex: 0 0 auto;
+  margin-top: 0.1rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #e2186f;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.safi-toast-error .safi-toast-badge {
+  background: #b42318;
+}
+
+.safi-toast-dismiss {
+  flex: 0 0 auto;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-left: auto;
+  color: #fff7fb;
+}
+
+.safi-toast-dismiss:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .safi-spinner {
+    animation: none;
+  }
+}
